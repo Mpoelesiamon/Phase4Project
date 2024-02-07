@@ -15,4 +15,4 @@ sqlalchemy-serializer = "1.4.1"
 [dev-packages]
 
 [requires]
-python_full_version = "3.10.12"
+python_full_version = "3.8.10"
