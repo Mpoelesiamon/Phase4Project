@@ -4,7 +4,7 @@ from flask import Flask, request, make_response
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
 
-from models import db
+from models import db, Game, User, Inventory
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///games.db'
