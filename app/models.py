@@ -14,6 +14,9 @@ class Game(db.Model, SerializerMixin):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
+    # Define the one-to-many relationship with Inventory
+    inventories = db.relationship("Inventory", back_populates="game")
+
     def __repr__(self):
         return f'<Game {self.title} for {self.platform}>'
 
@@ -24,7 +27,20 @@ class User(db.Model, SerializerMixin):
     username = db.Column(db.String)
     password = db.Column(db.String)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
-    updated_at = db.Column(db.DateTime, onupdate=db.func.now())        
+    updated_at = db.Column(db.DateTime, onupdate=db.func.now())   
+
+
+    @classmethod
+    def find_or_create_user(cls, user_id):
+        user = cls.query.get(user_id)
+        if user:
+            return user
+        else:
+            # Create a new user with the given ID
+            new_user = cls(id=user_id)
+            db.session.add(new_user)
+            db.session.commit()
+            return new_user    
 
 class Inventory(db.Model, SerializerMixin):
     __tablename__ ='inventories'
@@ -37,6 +53,9 @@ class Inventory(db.Model, SerializerMixin):
     # Relationships
     user = db.relationship("User", backref="inventory")
     game = db.relationship("Game", foreign_keys=[game_id])
+
+    # Define the relationship with Game
+    game = db.relationship("Game", back_populates="inventories")
 
     @property
     def serialize(self):
