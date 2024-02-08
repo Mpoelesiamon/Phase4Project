@@ -30,6 +30,7 @@ def games():
     games = []
     for game in Game.query.all():
         game_dict = {
+            "id" : game.id, 
             "title": game.title,
             "genre": game.genre,
             "platform": game.platform,
