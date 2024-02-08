@@ -27,7 +27,7 @@ function App() {
         <Routes>
         {/* <Route path="/" exact element={<Signup />} /> */}
           <Route path="/" exact element={isSignup ? <Signup /> : <Login />} />
-          {/* <Route path="/home" component={Home} /> */}
+          <Route path="/home" element={<Home />} />
           <Route path="/marketplace" component={Marketplace} />
           <Route path="/discover" component={Discover} />
           <Route path="/search" component={Search} />
