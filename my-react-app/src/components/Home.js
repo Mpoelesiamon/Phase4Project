@@ -7,7 +7,7 @@ const Home = () => {
   const [games, setGames] = useState([])
 
   useEffect(() => 
-    fetch('http://127.0.0.1:5554/games')
+  fetch('http://127.0.0.1:5554/games')
     .then(response => response.json())
     .then(data => setGames(data))
    ,[])
