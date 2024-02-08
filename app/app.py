@@ -32,6 +32,7 @@ def games():
         game_dict = {
             "id" : game.id, 
             "title": game.title,
+            "image": game.image,
             "genre": game.genre,
             "platform": game.platform,
             "price": game.price,
