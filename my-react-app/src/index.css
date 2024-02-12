@@ -1,3 +1,105 @@
+.navbar {
+  background-color: #f10905; /* Background color */
+  color: #ebf1f3; /* Text color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.navbar__brand {
+  font-size: 1.5rem; /* Adjust the font size */
+}
+
+.navbar__links {
+  display: flex;
+}
+
+.navbar__links a {
+  color: #0303e7; /* Text color */
+  text-decoration: none; /* Remove underline */
+  margin-right: 1rem; /* Adjust spacing between links */
+}
+
+.navbar__links a:hover {
+  color: #f4f6f7; /* Change text color on hover */
+}
+
+
+/* styles.css */
+
+/* Apply background image to the body */
+body {
+  background-image: url('https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.freepik.com%2Ffree-vector%2Fdark-hexagonal-background-with-gradient-color_79603-1409.jpg&tbnid=szgiEoh1w8vblM&vet=12ahUKEwiYyda8yJyEAxWwdaQEHYK7BrkQMygBegQIARBF..i&imgrefurl=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fgaming-background&docid=eqXuM0ILrT16oM&w=626&h=417&q=Cool%20images%20to%20add%20as%20background%20in%20my%20app%20for%20gaming&client=ubuntu&ved=2ahUKEwiYyda8yJyEAxWwdaQEHYK7BrkQMygBegQIARBF');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Ensure the background covers the entire viewport */
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.signup-container {
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.signup-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.signup-container input[type="email"],
+.signup-container input[type="text"],
+.signup-container input[type="date"],
+.signup-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.signup-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup-container button:hover {
+  background-color: #0056b3;
+}
+
+.signup-container p {
+  margin-top: 20px;
+}
+
+.signup-container p button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.signup-container p button:hover {
+  text-decoration: underline;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +113,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.home-page {
+  margin-top: 50px; /* Adjust this value as needed */
+}
+
+.genre-container {
+  margin-bottom: 20px;
+}
+
+.game-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.game {
+  width: 25%; /* Each game takes up 25% of the row width */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Add more CSS styles as necessary */

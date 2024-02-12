@@ -1,5 +1,5 @@
 const Game =({gameData})=>{
-    console.log("propsssssssssssssssssssssssssssssssssssssssssssssssssssssssssss")
+    console.log("props")
     console.log(gameData);
     return(
         <div className="">
@@ -9,6 +9,8 @@ const Game =({gameData})=>{
             <button>Price: {gameData.price}</button>
             
         </div>
+
+
     );
 
 }
