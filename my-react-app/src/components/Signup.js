@@ -1,4 +1,3 @@
-// Signup.js
 import React, { useState } from 'react';
 
 const Signup = ({ switchToLogin }) => {
@@ -9,8 +8,36 @@ const Signup = ({ switchToLogin }) => {
   const [gender, setGender] = useState('');
 
   const handleSignup = () => {
-    // Handle signup logic
-    console.log('Signing up...');
+    // Prepare data for signup
+    const signupData = {
+      email: email,
+      username: username,
+      birthdate: birthdate,
+      password: password,
+      gender: gender
+    };
+
+    // Send POST request to the server
+    fetch('http://127.0.0.1:5554/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(signupData)
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log('Signup successful');
+        // Handle successful signup, e.g., redirect or display success message
+      } else {
+        console.error('Signup failed');
+        // Handle failed signup, e.g., display error message
+      }
+    })
+    .catch(error => {
+      console.error('Error occurred during signup:', error);
+      // Handle error, e.g., display error message
+    });
   };
 
   return (
