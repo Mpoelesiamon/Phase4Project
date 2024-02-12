@@ -3,8 +3,8 @@
 from flask import Flask, request, make_response, jsonify, url_for
 from flask_migrate import Migrate
 #from flask_restful import Api, Resource
+from flask import abort
 from flask_cors import CORS
-
 from models import db, Game, User, Inventory
 
 app = Flask(__name__)
@@ -12,7 +12,14 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///games.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 
-CORS(app)
+# Disable Strict-Transport-Security header
+app.config['SESSION_COOKIE_SECURE'] = False  # Uncomment this line if needed
+app.config['SESSION_COOKIE_HTTPONLY'] = False  # Uncomment this line if needed
+
+CORS(app, resources={r"/signup": {"origins": ["http://localhost:5554", "https://localhost:5554"]}})
+
+
+#CORS(app)
 migrate = Migrate(app, db)
 
 db.init_app(app)
@@ -125,12 +132,33 @@ def add_game_to_inventory():
         return jsonify({"error": "User or game not found"}), 404
 
     # Add the game to the user's inventory
-    inventory_entry = Inventory(user=user, game=game, quantity=quantity)
-    db.session.add(inventory_entry)
+    #inventory_entry = Invehttp://127.0.0.1/
+@app.route("/signup", methods=["GET", "POST", "OPTIONS"])
+def signup():
+# Get data from the request
+    data = request.get_json(force=True)
+
+    email = data.get("email")
+    username = data.get("username")
+    birthdate = data.get("birthdate")
+    password = data.get("password")
+    gender = data.get("gender")
+
+    # Check if all required data is provided
+    if not email or not username or not birthdate or not password:
+        return jsonify({"error": "Email, username, birthdate, and password are required"}), 400
+
+    # Check if the user already exists
+    existing_user = User.query.filter_by(email=email).first()
+    if existing_user:
+        return jsonify({"error": "User with this email already exists"}), 400
+
+    # Create a new user
+    new_user = User(email=email, username=username, birthdate=birthdate, password=password, gender=gender)
+    db.session.add(new_user)
     db.session.commit()
 
-    return jsonify({"message": "Game added to inventory successfully"}), 201
-
+    return jsonify({"message": "User registered successfully"}), 201
 
 
 if __name__ == '__main__':
