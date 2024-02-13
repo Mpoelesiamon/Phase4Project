@@ -18,7 +18,7 @@ const Signup = ({ switchToLogin }) => {
     };
 
     // Send POST request to the server
-    fetch('http://127.0.0.1:5554/signup', {
+    fetch('http://localhost:5554/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
