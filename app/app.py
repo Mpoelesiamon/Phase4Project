@@ -133,11 +133,21 @@ def add_game_to_inventory():
 
     # Add the game to the user's inventory
     #inventory_entry = Invehttp://127.0.0.1/
-@app.route("/signup", methods=["GET", "POST", "OPTIONS"])
+@app.route("/signup", methods=["OPTIONS"])
+def signupoptions():
+    print("hi")
+    response = jsonify({"message": "ok"})
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add("Access-Control-Allow-Methods", "POST, OPTIONS")
+    response.headers.add("Access-Control-Allow-Headers", "Content-Type")
+    return response, 200
+
+@app.route("/signup", methods=["POST"])
 def signup():
 # Get data from the request
     data = request.get_json(force=True)
-
+    print("Received data:", data)
+    
     email = data.get("email")
     username = data.get("username")
     birthdate = data.get("birthdate")
